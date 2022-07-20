@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Customer Manager</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <!--<link href="css/styles.css" rel="stylesheet" />-->
+        <link th:href="@{/css/styles.css}" rel="stylesheet" />
+        
+
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container px-5">
+                <a class="navbar-brand" href="#!">Customers</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active" th:href="@{/addnew}">Register</a></li>
+                            
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container px-4 px-lg-5">
+            <!-- Heading Row-->
+            <div class="row gx-4 gx-lg-5 align-items-center my-5">
+                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0"  th:src="@{images/Customers.jpg}" alt="..." /></div>
+                <div class="col-lg-5">
+                    <h1 class="font-weight-light">Customer Manager</h1>
+                    <p>Hello and welcome to our Custmer Management System! A quick, easy application to keep track of all customers in your buisness to help keep buisness organized and flowing. Click "Register" in the upper right tab to add a new Customer! Search any customer card by name or state to filter details. Click "update" on customer cards to change any of their information. Simply click "unregister" to delete a customer from the system. </p>
+                </div>
+            </div>
+            <!-- Search and Filter-->
+            
+            <div class="input-filter">
+                <input type="text" name="searchFilter" class="filter form-control" id="filter" placeholder="Search" onkeyup="searchCard()">
+                <br><br>
+            </div>
+
+            
+          <div class="card-lists" id="card-lists">
+            <!-- Content Row-->
+            <div class="row gx-4 gx-lg-5">
+           
+       
+        <tr th:each="customer:${listAllCustomers}">
+          <div class="card-filter col-md-4 mb-5">
+           <div class="card h-100">
+           <div class="card-body">
+           <span style="font-weight: 500;  font-size: calc(1.325rem + 0.9vw); padding-right:2px" class="card-title"><td th:text="${customer.firstName}"></span>
+           <span style="font-weight: 500;  font-size: calc(1.325rem + 0.9vw); padding-left:2px" class="card-title"><td th:text="${customer.lastName}"></span>
+                            
+        <p class="card-text">
+        <td th:text="${customer.email}"></td><br>
+ 		<td th:text="${customer.state}"></td><br>
+ 		<td th:text="${customer.city}"></td><br>
+ 		<td th:text="${customer.address}"></td><br>
+ 		<td th:text="${customer.zip}"></td><br>
+        </p>
+        </div>
+        <div class="card-footer">
+         <td> <a style="padding: 15px;" th:href="@{/showCustomerUpdate/{id}(id=${customer.id})}" class="btn btn-primary">Update</a></td>
+                
+                <a style="padding: 15px;" th:href="@{/deleteCustomer/{id}(id=${customer.id})}" class="btn btn-danger">Unregister</a></td>
+                
+                </div>
+                    </div>
+                </div>
+               </tr>  
+            </div> 
+            </div>
+        </div>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Customer Manager 2022</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+       
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script type="text/javascript" th:src="@{/js/scripts.js}"></script>
+         <script type="text/javascript" th:src="@{/js/filter.js}"></script>
+    </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Customer Manager</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <!--<link href="css/styles.css" rel="stylesheet" />-->
+        <link th:href="@{/css/styles.css}" rel="stylesheet" />
+        
+
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container px-5">
+                <a class="navbar-brand" href="#!">Customers</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active" th:href="@{/addnew}">Register</a></li>
+                            
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container px-4 px-lg-5">
+        
+        <h1>New Customer</h1>
+		<hr>
+		<h2>Customer Details</h2>
+
+		<form action="#" th:action="@{/save}" th:object="${customer}"
+			method="POST">
+			<input type="text" th:field="*{firstName}" placeholder="First Name"
+				class="form-control mb-4 col-4"> 
+			<input type="text" th:field="*{lastName}" placeholder="Last Name"
+				class="form-control mb-4 col-4"> 
+			<input type="text" th:field="*{email}" placeholder="Email"
+				class="form-control mb-4 col-4">
+			<input type="text"th:field="*{state}" placeholder="State"
+				class="form-control mb-4 col-4">
+			<input type="text" th:field="*{city}" placeholder="City"
+				class="form-control mb-4 col-4">
+			<input type="text" th:field="*{address}" placeholder="Address"
+				class="form-control mb-4 col-4">
+			<input type="text" th:field="*{zip}" placeholder="Zip"
+				class="form-control mb-4 col-4">
+			<button type="submit" class="btn btn-info col-2">Submit</button>
+		</form>
+
+		<hr>
+
+		<a th:href="@{/}"> Back to Customer Home Page</a>
+        
+           
+                    
+          
+        </div>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Customer Manager 2022</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+       
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script type="text/javascript" th:src="@{/js/scripts.js}"></script>
+    </body>
+</html>
