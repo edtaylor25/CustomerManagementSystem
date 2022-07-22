@@ -31,10 +31,10 @@ public class CustomerServiceImpl implements CustomerService{
 	public Customer getById(Long id) {
 		Optional<Customer> optional = customerRepository.findById(id);
 		//Customer customer = null;
-		if (optional.isPresent())
-		return	optional.get();
-		else throw new RuntimeException(
-				"Customer not found : " + id);
+//		if (optional.isPresent())
+			return	optional.get();
+//		else throw new RuntimeException(
+//				"Customer not found : " + id);
 		//return customer; 
 		//= customer 
 	}

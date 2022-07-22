@@ -18,10 +18,10 @@ public class CustomerController {
 	CustomerService customerService;
 
 
-	
+	 //method is called when api is hit.
 	@GetMapping("/")
-	public String homePage(Model model) {
-		model.addAttribute("listAllCustomers", customerService.getAllCustomers());
+	public String getCustomers(Model model) {
+		model.addAttribute("listAllCustomers", customerService.getAllCustomers()); //adding the variable to the model
 		return "index";
 	}
 	
@@ -32,15 +32,18 @@ public class CustomerController {
 		return "newcustomer";
 	}
 	
+	
 	@PostMapping("/save")
 	public String saveCustomer(@ModelAttribute("customer") Customer customer) {
 		 customerService.saveCustomer(customer);
 		 return "redirect:/";
 	}
+	
+	//taking id out of the path, passing it into the service, put customer the model object 
 	@GetMapping("/showCustomerUpdate/{id}")
 	public String updateCustomer(@PathVariable(value = "id") long id, Model model) {
 		Customer customer = customerService.getById(id);
-		model.addAttribute("customer", customer);
+		model.addAttribute("customer", customer);         //taking customer by id, putting in variable customer which is put in model
 		return "update2";
 	}
 	
